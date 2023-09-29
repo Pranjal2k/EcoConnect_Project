@@ -1,0 +1,52 @@
+//The code for EcoProject
+
+import java.util.ArrayList;
+import java.util.List;
+
+// Class to represent a user
+class User {
+    private String username;
+    private String email;
+    private List<String> sharedPosts;
+
+    public User(String username, String email) {
+        this.username = username;
+        this.email = email;
+        this.sharedPosts = new ArrayList<>();
+    }
+
+    public void sharePost(String post) {
+        sharedPosts.add(post);
+        System.out.println(username + " shared a post: " + post);
+    }
+}
+
+// Class to represent a post
+class Post {
+    private String content;
+    private String author;
+
+    public Post(String content, String author) {
+        this.content = content;
+        this.author = author;
+    }
+
+    @Override
+    public String toString() {
+        return "Post by " + author + ":\n" + content;
+    }
+}
+
+// Main EcoConnect application
+public class EcoConnect {
+    public static void main(String[] args) {
+        User user1 = new User("Alice", "alice@example.com");
+        User user2 = new User("Bob", "bob@example.com");
+
+        Post post1 = new Post("Just planted a tree! 🌳 #SustainableLiving", user1.getUsername());
+        Post post2 = new Post("Reduced my plastic waste today. Small steps count! ♻️", user2.getUsername());
+
+        user1.sharePost(post1.toString());
+        user2.sharePost(post2.toString());
+    }
+}
